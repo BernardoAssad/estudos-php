@@ -28,6 +28,8 @@ echo " ";
 O PHP por ser uma linguagem de baixa tipagem, não necessita da declaração do tipo da variável, porém, com o gettype podemos ver qual tipo de dado estamos 
 tratando.
 
+=============================
+
 Dados primitivos:
 
 - Inteiro
