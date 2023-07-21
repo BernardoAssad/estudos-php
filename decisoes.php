@@ -17,3 +17,7 @@ if ($idade >= 18) {
 }
 
 echo PHP_EOL . "Tchau!";
+
+
+/* Neste arquivo, aprendi sobre condições em PHP, if, else if e else. Sei que existe uma expressão em PHP chamada match, irei me aprofundar nela mais para 
+frente. Além dela, também existe a declaração do switch que serve para controlar fluxos, também irei aprender mais sobre. */
