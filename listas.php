@@ -19,4 +19,4 @@ Atualização após a criação do arquivo foreach: Aprendi a colocar mais dados
 20; Para adicionar 20 na posição 7 da minha array, que é a última, caso eu colocasse 5, por exemplo, ela substituiria o 50, que é o índice 5 atual e iria
 virar 20. Na linha 7, coloquei $idadeList[count($idadeList)] = 33; Para adicionar no fim de toda a contagem de índices da array. E na linha 8, o jeito mais
 eficaz de adicionar ao fim da array, basta colocar: $idadeList[] = 45; Deixando dentro das chaves vazio, o PHP entende que é para adicionar ao final da lista
-o que está pedindo.*/
+o que está pedindo. */
