@@ -25,15 +25,49 @@ $contasCorrentes['123.456.789-00'] = depositar($contasCorrentes['123.456.789-00'
 $contasCorrentes['123.456.789-01'] = depositar($contasCorrentes['123.456.789-01'], 1000);
 $contasCorrentes['123.456.789-02'] = depositar($contasCorrentes['123.456.789-02'], 1000);
 
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-00']);
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-01']);
+titularComLetrasMaiusculas($contasCorrentes['123.456.789-02']);
+
+// unset ($contasCorrentes['123.456.789-00']);
+
+echo "<ul>";   
 foreach ($contasCorrentes as $cpf => $conta) {
+    // list('titular' => $titular, 'saldo' => $saldo) = $conta;
+    // ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    // exibeMensagem("$cpf $titular $saldo");    
     // exibeMensagem(mensagem:$cpf . " " . $conta['titular'] . ' ' .  $conta['saldo']);
     // exibeMensagem("$cpf $conta[titular] $conta[saldo]");
-    titularComLetrasMaiusculas($conta);
-    exibeMensagem("$cpf {$conta['titular']} {$conta['saldo']}");
+    // exibeConta($conta);
 }
 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contas correntes</h1>
+
+    <dl>
+        <?php foreach($contasCorrentes as $cpf => $conta) {?>
+        <dt>
+            <h3><?= $conta['titular']; ?> - <?= $cpf; ?></h3>
+        </dt>
+        <dd>
+            Saldo: <?= $conta['saldo']; ?>
+        </dd>
+        <?php } ?>
+    </dl>
+</body>
+</html>
 
 
+<?php
 /* 
 OBS: Deixarei tudo explicado aqui, porém separarei esse arquivo com a execução e outro com as funcoes, chamado funcoes.php
 
@@ -48,7 +82,7 @@ de encontrar o erro. Não é necessário toda função ter parâmetros, apenas t
 para executar tal ação. Também, não é necessário específicar o tipo de dado que a função irá retornar, mas também ajuda no controle e segurança do projeto,
 e caso a função não retorne nada, esse dado não existirá.
 
-Na invocação das funções, na linha 45, por exemplo, coloquei a conta corrente 123.456.789-00 recebendo a função sacar. Isto quer dizer que, nesta mesma
+Na invocação das funções, no arquivo de funcoes.php, por exemplo, coloquei a conta corrente 123.456.789-00 recebendo a função sacar. Isto quer dizer que, nesta mesma
 conta, dentro da array contasCorrentes, a função sacar, irá fazer a funcionalidade dela, que é retirar dinheiro do saldo da conta, e o valor foi de 500.
 Na linha 49, na mesma conta recebendo a função depositar, que no caso, depositou 700. Note que na linha 45 eu coloquei o parâmetro valorASacar:500, nesta
 linha não coloquei, justamente para deixar claro que é possível atribuir valor dos dois jeitos.
@@ -65,4 +99,20 @@ ele será incorporado, porém, nos dá a segurança de que se ele já foi inclu�
 do require, existe o include, o include faz o mesmo que o require, porém não necessariamente irá importar o arquivo caso dê algum problema. Com o require, 
 caso o programa não ache o arquivo requirido, ele parará a execução e nos retornará um erro. Caso o include não ache o arquivo, ele continuará a execução
 e nos dará um alerta.
+
+Dentro do foreach adicionei uma mudança, list('titular' => $titular, 'saldo' => $saldo) = $conta; Esta linha, neste caso está passando o índice titular 
+para uma variável $titular, a mesma coisa com o índice saldo. E isso tudo está sendo referido a variável $conta do foreach. Na linha comentada abaixo dela 
+é uma forma semelhante de fazer esta função, porém com o list é algo mais "elegante".
+
+A função unset que está comentada, serve para excluir uma variável da memória. No caso 
+
+Criei uma função chamada exibeConta, onde a declaração dela está em funcoes.php. Criei ela para exibir a conta em um servidor PHP de um jeito mais amigável 
+com HTML. Criei um echo "<ul>"; para poder iniciar uma lista, no arquivo funcoes.php declarei para aparecer e no fim fechei a ul.
+
+Após isso, decidi comentar a invocação da função exibeConta() para criar um HTML no PHP. Fechei o PHP inicial para começar um arquivo HTML. Nele, fiz uma
+estrutura simples HTML com dl para descrição e para deixar mais elegante o código. No meio do <dl> abri <?php e juntei com o HTML para poder fazer uso 
+das variáveis que criei no documento PHP, e também usar o foreach para agilizar o processo. Para imprimir a variável do PHP no HTML, usei <?= que faz uma 
+espécie de echo com a variável para usarmos com outra linguagem e por fim fechei com ?>.
+
 */
+?>
