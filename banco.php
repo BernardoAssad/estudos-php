@@ -1,31 +1,6 @@
 <?php
 
-function sacar(array $conta, float $valorASacar): array 
-{
-    if ($valorASacar > $conta['saldo']) {
-        exibeMensagem(mensagem: "Você não pode sacar");
-    } else {
-        $conta['saldo'] -= $valorASacar;
-    }
-
-    return $conta;
-}
-
-function exibeMensagem(string $mensagem) 
-{
-    echo $mensagem . PHP_EOL;
-}
-
-function depositar(array $conta, float $valorADepositar): array
-{
-    if ($valorADepositar > 0) {
-        $conta['saldo'] += $valorADepositar;
-    } else {
-        exibeMensagem(mensagem:"Depósitos precisam ser positivos.");
-    }
-
-    return $conta;
-}
+require_once 'funcoes.php';
 
 $contasCorrentes = [
     '123.456.789-00' => [
@@ -53,12 +28,16 @@ $contasCorrentes['123.456.789-02'] = depositar($contasCorrentes['123.456.789-02'
 foreach ($contasCorrentes as $cpf => $conta) {
     // exibeMensagem(mensagem:$cpf . " " . $conta['titular'] . ' ' .  $conta['saldo']);
     // exibeMensagem("$cpf $conta[titular] $conta[saldo]");
+    titularComLetrasMaiusculas($conta);
     exibeMensagem("$cpf {$conta['titular']} {$conta['saldo']}");
 }
 
 
 
-/* Neste arquivo obtive muito conhecimento da sintaxe em PHP. Primeiro sobre funções, servem para separar funcionalidades do código em partes menores e 
+/* 
+OBS: Deixarei tudo explicado aqui, porém separarei esse arquivo com a execução e outro com as funcoes, chamado funcoes.php
+
+Neste arquivo obtive muito conhecimento da sintaxe em PHP. Primeiro sobre funções, servem para separar funcionalidades do código em partes menores e 
 reutilizáveis, isto é, podemos criar uma função e chamá-la sempre que quiser para executar um processo e retornar um valor único. A diferença de função
 para subrotina é que função sempre retorna um valor único, subrotina retorna diversas variáveis ou não retorna nada.
 
@@ -79,4 +58,11 @@ associativas. Na linha 54, tem um metódo que é funcional porém mais amador qu
 que printa tudo de uma vez com o uso das " no começo e no final e desse jeito imprime tudo certo, porém, não é recomendado pelo motivo de usarmos 
 inadequadamente as arrays, como: $conta[titular] sem o uso das ''. Na linha 56, está o jeito correto e usual de imprimir mensagens com arrays associativas.
 Fazemos o uso de " no começo e no fim também, porém, as arrays, colocamos entre {} e adicionamos as '' do jeito correto de utilizar as arrays associativas.
+
+Utilizei uma funcionalidade chamada require_once. Esta funcionalidade funciona como se fosse um import. Ela permite importar, incluir, incorporar, outros 
+arquivos, neste arquivo. O que eu fiz foi o require_once ou seja, ele irá requerir que um arquivo seja importado para este, porém o _once, significa que 
+ele será incorporado, porém, nos dá a segurança de que se ele já foi incluído não será novamente. O require_once é uma forma mais segura do require. Além
+do require, existe o include, o include faz o mesmo que o require, porém não necessariamente irá importar o arquivo caso dê algum problema. Com o require, 
+caso o programa não ache o arquivo requirido, ele parará a execução e nos retornará um erro. Caso o include não ache o arquivo, ele continuará a execução
+e nos dará um alerta.
 */
