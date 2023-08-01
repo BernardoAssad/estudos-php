@@ -4,15 +4,37 @@ class Conta
 {
     public $cpfTitular;
     public $nomeTitular;
-    public $saldo;
+    public $saldo = 0;
 
-    public function sacar (float $valorASacar)
+    public function sacar(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
-            echo "Saldo indisponível.";
-        } else {
-            $this->saldo -= $valorASacar;
+            echo "Saldo indisponível";
+            return;
         }
+
+        $this->saldo -= $valorASacar;
+    }
+
+    public function depositar(float $valorADepositar): void
+    {
+        if ($valorADepositar < 0) {
+            echo "Valor precisa ser positivo";
+            return;
+        }
+
+        $this->saldo += $valorADepositar;
+    }
+
+    public function transferir(float $valorATransferir, Conta $contaDestino): void
+    {
+        if ($valorATransferir > $this->saldo) {
+            echo "Saldo indisponível";
+            return;
+        }
+
+        $this->sacar($valorATransferir);
+        $contaDestino->depositar($valorATransferir);
     }
 }
 
@@ -66,5 +88,11 @@ $primeiraConta->sacar(1000);
 Com isso, sacaria 1000 reais da conta, ou não, caso o saldo fosse insuficiente. A palavra $this tem extrema importância na criação desse código, pois, caso 
 tenhamos uma $segundaConta por exemplo, funcionaria a invocação do método, pelo motivo dessa funcionalidade do $this servir exatamente para isso. Resumindo, 
 a variável $this faz referência à instãncia do objeto em que o método é chamado.
+
+Na função depositar não tem nada de novo em questão de sintaxe e na função de transferir quis demonstrar o uso do $this com um metódo.
+
+Perceba também que não coloquei nenhum else nesse arquivo, pois não havia necessidade. Em todo if que eu coloquei era caso ocorrese algum erro de quantia, 
+então, não precisava do else, era apenas uma verificação básica com uma notificação simples, então, caso entrasse nessa condição, iria printar e retornar 
+logo após. Então, tudo que vem depois do return não existe, caso entre na condição. Caso não entre, o método iria apenas executar o restante do código.
 
 */
