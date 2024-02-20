@@ -49,8 +49,8 @@ class Conta
             return;
         }
 
-        $this->sacar($valorATransferir);
-        $contaDestino->depositar($valorATransferir);
+        $this->saca($valorATransferir);
+        $contaDestino->deposita($valorATransferir);
     }
 
     public function recuperaSaldo(): float
@@ -70,7 +70,7 @@ class Conta
 
     private function validaNomeTitular(string $nomeTitular)
     {
-        if (strlen($nomeTitular) < 2) {
+        if (strlen($nomeTitular) > 2) {
             echo "Nome precisa ter pelo menos 2 caracteres";
             exit();
         }
