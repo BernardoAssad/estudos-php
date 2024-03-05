@@ -19,7 +19,7 @@ $jogadores2024 = [...$jogadores2023, 'Léo Jardim', ...$jogadores1998];
 array_push($jogadores2024, 'Cristiano', 'Phillipe', 'Lionel');
 $jogadores2024[] = 'Neymar';
 
-array_unshift($jogadores2024, 'Bernardo', 'Kevin');
+array_unshift($jogadores2024, 'Bernardo', 'Raniel');
 
 echo array_shift($jogadores2024) . PHP_EOL;
 
