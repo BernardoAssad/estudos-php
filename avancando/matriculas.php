@@ -12,7 +12,7 @@ $jogadores1998 = [
     'Romário',
     'Edmundo',
     'Juninho',
-    'Fellipe'
+    'Felipe'
 ];
 
 $jogadores2024 = [...$jogadores2023, 'Léo Jardim', ...$jogadores1998];
