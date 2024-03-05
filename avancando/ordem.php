@@ -2,7 +2,7 @@
 
 $notas = [
     [
-        'aluno' => 'Maria',
+        'aluno' => 'Arabella',
         'nota' => 10,
     ],
     [
