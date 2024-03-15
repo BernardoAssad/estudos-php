@@ -9,7 +9,7 @@ $idadeList = [19,20,25,38,14,50,84];
 
 list($idadeBarbosa, $idadeAdemir, $idadeEdmundo) = $idadeList;
 
-$idadeList[7] = 20;
+$idadeList[7] = 30;
 $idadeList[count($idadeList)] = 33;
 $idadeList[] = 45;
 
