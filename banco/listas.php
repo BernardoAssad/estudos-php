@@ -11,7 +11,7 @@ list($idadeBarbosa, $idadeAdemir, $idadeEdmundo) = $idadeList;
 
 $idadeList[7] = 30;
 $idadeList[count($idadeList)] = 33;
-$idadeList[] = 42;
+$idadeList[] = 45;
 
 
 foreach ($idadeList as $idade) {
